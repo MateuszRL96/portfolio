@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Mateusz Kulec Developer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="blog.css" />
+
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="main.html" class="logo">MKCUP2.dev</a>
+            <ul class="nav-links">
+                <li><a href="main.html">Start</a></li>
+                <li><a href="uslugi.html">Usługi</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="blog.html" class="nav-active">Blog</a></li>
+                <li><a href="o-mnie.html">O mnie</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+            </ul>
+            <a href="kontakt.html" class="cta-nav">Zamów wycenę</a>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1 class="fade-in">Blog Developera</h1>
+            <p class="fade-in">Dzielę się wiedzą o programowaniu, technologiach i trendach w branży IT</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="blog-layout">
+            <!-- Main Blog Content -->
+            <main class="blog-main">
+                <!-- Featured Post -->
+                <article class="featured-post fade-in">
+                    <div class="featured-badge">⭐ Wyróżniony</div>
+                    <h2 class="featured-title">React 18 - Najważniejsze nowości i zmiany</h2>
+                    <p class="featured-excerpt">Przegląd najważniejszych funkcji wprowadzonych w React 18, w tym Concurrent Features, Automatic Batching i nowy hook useId. Dowiedz się, jak te zmiany wpłyną na Twoje aplikacje.</p>
+                    <a href="#" class="btn-featured">Czytaj więcej</a>
+                </article>
+
+                <!-- Blog Posts Grid -->
+                <div class="blog-posts" id="blogPosts">
+                    <article class="blog-post fade-in" data-category="javascript">
+                        <div class="post-image">⚡</div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span class="post-category">JavaScript</span>
+                                <span class="post-date">📅 15 maja 2024</span>
+                            </div>
+                            <h3 class="post-title">Asynchroniczność w JavaScript - async/await vs Promises</h3>
+                            <p class="post-excerpt">Porównanie różnych sposobów obsługi operacji asynchronicznych w JavaScript. Kiedy używać async/await, a kiedy klasycznych Promise...</p>
+                            <div class="post-footer">
+                                <span class="read-time">🕒 5 min czytania</span>
+                                <a href="#" class="btn-read-more">Czytaj</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="blog-post fade-in" data-category="css">
+                        <div class="post-image">🎨</div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span class="post-category">CSS</span>
+                                <span class="post-date">📅 12 maja 2024</span>
+                            </div>
+                            <h3 class="post-title">CSS Grid vs Flexbox - Kiedy używać którego?</h3>
+                            <p class="post-excerpt">Praktyczny przewodnik po dwóch najważniejszych systemach layoutu w CSS. Przykłady użycia i porady dotyczące wyboru odpowiedniego narzędzia...</p>
+                            <div class="post-footer">
+                                <span class="read-time">🕒 7 min czytania</span>
+                                <a href="#" class="btn-read-more">Czytaj</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="blog-post fade-in" data-category="performance">
+                        <div class="post-image">🚀</div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span class="post-category">Performance</span>
+                                <span class="post-date">📅 8 maja 2024</span>
+                            </div>
+                            <h3 class="post-title">Optymalizacja wydajności stron internetowych w 2024</h3>
+                            <p class="post-excerpt">Kompletny przewodnik po technikach optymalizacji, od Core Web Vitals po zaawansowane strategie ładowania zasobów...</p>
+                            <div class="post-footer">
+                                <span class="read-time">🕒 12 min czytania</span>
+                                <a href="#" class="btn-read-more">Czytaj</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="blog-post fade-in" data-category="tools">
+                        <div class="post-image">🛠️</div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span class="post-category">Narzędzia</span>
+                                <span class="post-date">📅 5 maja 2024</span>
+                            </div>
+                            <h3 class="post-title">Mój setup developera - narzędzia i konfiguracja 2024</h3>
+                            <p class="post-excerpt">Przegląd mojego aktualnego setupu programistycznego: edytory, rozszerzenia, terminale i inne narzędzia, które usprawniają codzienną pracę...</p>
+                            <div class="post-footer">
+                                <span class="read-time">🕒 8 min czytania</span>
+                                <a href="#" class="btn-read-more">Czytaj</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="blog-post fade-in" data-category="backend">
+                        <div class="post-image">🗄️</div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span class="post-category">Backend</span>
+                                <span class="post-date">📅 2 maja 2024</span>
+                            </div>
+                            <h3 class="post-title">Node.js vs Python - który wybrać do backendu?</h3>
+                            <p class="post-excerpt">Szczegółowe porównanie dwóch popularnych technologii backendowych. Wydajność, ekosystem, community i przypadki użycia...</p>
+                            <div class="post-footer">
+                                <span class="read-time">🕒 10 min czytania</span>
+                                <a href="#" class="btn-read-more">Czytaj</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="blog-post fade-in" data-category="frontend">
+                        <div class="post-image">💻</div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span class="post-category">Frontend</span>
+                                <span class="post-date">📅 28 kwietnia 2024</span>
+                            </div>
+                            <h3 class="post-title">Trendy w web designie na 2024 rok</h3>
+                            <p class="post-excerpt">Przegląd najważniejszych trendów w projektowaniu stron internetowych: od dark mode po micro-interactions i AI-assisted design...</p>
+                            <div class="post-footer">
+                                <span class="read-time">🕒 6 min czytania</span>
+                                <a href="#" class="btn-read-more">Czytaj</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <button>← Poprzednia</button>
+                    <button class="active">1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>Następna →</button>
+                </div>
+            </main>
+
+            <!-- Sidebar -->
+            <aside class="blog-sidebar">
+                <!-- Search Box -->
+                <div class="search-box fade-in">
+                    <input type="text" class="search-input" placeholder="Szukaj artykułów..." id="searchInput">
+                </div>
+
+                <!-- Categories -->
+                <div class="categories fade-in">
+                    <h3>Kategorie</h3>
+                    <ul class="category-list">
+                        <li class="category-item active" data-category="all">
+                            <span>Wszystkie</span>
+                            <span class="category-count">12</span>
+                        </li>
+                        <li class="category-item" data-category="javascript">
+                            <span>JavaScript</span>
+                            <span class="category-count">4</span>
+                        </li>
+                        <li class="category-item" data-category="css">
+                            <span>CSS</span>
+                            <span class="category-count">3</span>
+                        </li>
+                        <li class="category-item" data-category="performance">
+                            <span>Performance</span>
+                            <span class="category-count">2</span>
+                        </li>
+                        <li class="category-item" data-category="tools">
+                            <span>Narzędzia</span>
+                            <span class="category-count">2</span>
+                        </li>
+                        <li class="category-item" data-category="backend">
+                            <span>Backend</span>
+                            <span class="category-count">1</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Recent Posts -->
+                <div class="recent-posts fade-in">
+                    <h3>Najnowsze posty</h3>
+                    <div class="recent-post-item">
+                        <div class="recent-post-title">React 18 - Najważniejsze nowości</div>
+                        <div class="recent-post-date">18 maja 2024</div>
+                    </div>
+                    <div class="recent-post-item">
+                        <div class="recent-post-title">Asynchroniczność w JavaScript</div>
+                        <div class="recent-post-date">15 maja 2024</div>
+                    </div>
+                    <div class="recent-post-item">
+                        <div class="recent-post-title">CSS Grid vs Flexbox</div>
+                        <div class="recent-post-date">12 maja 2024</div>
+                    </div>
+                    <div class="recent-post-item">
+                        <div class="recent-post-title">Optymalizacja wydajności</div>
+                        <div class="recent-post-date">8 maja 2024</div>
+                    </div>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="newsletter fade-in">
+                    <h3>📧 Newsletter</h3>
+                    <p>Otrzymuj najnowsze artykuły prosto na maila!</p>
+                    <form class="newsletter-form">
+                        <input type="email" class="newsletter-input" placeholder="Twój email">
+                        <button type="submit" class="btn-newsletter">Zapisz się</button>
+                    </form>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+<script src="blog.js"></script>
+</body>
+</html>

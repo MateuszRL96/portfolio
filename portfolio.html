@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Mateusz Kulec Developer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="portfolio.css" />
+</head>
+<body>
+<!-- Navigation -->
+<nav>
+    <div class="nav-container">
+        <a href="main.html" class="logo">MKCUP2.dev</a>
+        <ul class="nav-links">
+            <li><a href="main.html">Start</a></li>
+            <li><a href="uslugi.html">Usługi</a></li>
+            <li><a href="portfolio.html" class="nav-active">Portfolio</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="o-mnie.html">O mnie</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+        <a href="kontakt.html" class="cta-nav">Zamów wycenę</a>
+    </div>
+</nav>
+
+<!-- Page Header -->
+<div class="page-header">
+    <div class="container">
+        <h1 class="fade-in">Moje Portfolio</h1>
+        <p class="fade-in">Poznaj moje najlepsze projekty i realizacje dla klientów</p>
+    </div>
+</div>
+
+<!-- Portfolio Filter -->
+<section class="container">
+    <div class="portfolio-filter fade-in">
+        <button class="filter-btn active" data-filter="all">Wszystkie</button>
+        <button class="filter-btn" data-filter="website">Strony WWW</button>
+        <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
+        <button class="filter-btn" data-filter="webapp">Aplikacje</button>
+    </div>
+
+    <!-- Portfolio Grid -->
+    <div class="portfolio-grid">
+        <div class="portfolio-item fade-in" data-category="ecommerce">
+            <div class="portfolio-image">🛒</div>
+            <div class="portfolio-content">
+                <h3 class="portfolio-title">Sklep TechMart</h3>
+                <div class="portfolio-category">E-commerce</div>
+                <p class="portfolio-description">Nowoczesny sklep internetowy z elektroniką, pełną integracją płatności i systemem zarządzania zapasami.</p>
+                <div class="portfolio-tech">
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">MongoDB</span>
+                    <span class="tech-tag">Stripe</span>
+                </div>
+                <div class="portfolio-links">
+                    <a href="#" class="portfolio-btn btn-demo" onclick="openModal('techmart')">Zobacz więcej</a>
+                    <a href="#" class="portfolio-btn btn-code">GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="portfolio-item fade-in" data-category="website">
+            <div class="portfolio-image">🏥</div>
+            <div class="portfolio-content">
+                <h3 class="portfolio-title">Klinika Medica</h3>
+                <div class="portfolio-category">Strona WWW</div>
+                <p class="portfolio-description">Responsywna strona dla kliniki medycznej z systemem rezerwacji wizyt i panelem pacjenta.</p>
+                <div class="portfolio-tech">
+                    <span class="tech-tag">WordPress</span>
+                    <span class="tech-tag">PHP</span>
+                    <span class="tech-tag">MySQL</span>
+                    <span class="tech-tag">jQuery</span>
+                </div>
+                <div class="portfolio-links">
+                    <a href="#" class="portfolio-btn btn-demo" onclick="openModal('medica')">Zobacz więcej</a>
+                    <a href="#" class="portfolio-btn btn-code">GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="portfolio-item fade-in" data-category="webapp">
+            <div class="portfolio-image">📊</div>
+            <div class="portfolio-content">
+                <h3 class="portfolio-title">TaskFlow Pro</h3>
+                <div class="portfolio-category">Aplikacja Web</div>
+                <p class="portfolio-description">Zaawansowana aplikacja do zarządzania projektami z real-time collaboration i analitiką.</p>
+                <div class="portfolio-tech">
+                    <span class="tech-tag">Vue.js</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">PostgreSQL</span>
+                    <span class="tech-tag">Socket.io</span>
+                </div>
+                <div class="portfolio-links">
+                    <a href="#" class="portfolio-btn btn-demo" onclick="openModal('taskflow')">Zobacz więcej</a>
+                    <a href="#" class="portfolio-btn btn-code">GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="portfolio-item fade-in" data-category="website">
+            <div class="portfolio-image">🍕</div>
+            <div class="portfolio-content">
+                <h3 class="portfolio-title">Pizzeria Bella</h3>
+                <div class="portfolio-category">Strona WWW</div>
+                <p class="portfolio-description">Elegancka strona restauracji z menu online, rezerwacją stolików i systemem zamówień.</p>
+                <div class="portfolio-tech">
+                    <span class="tech-tag">HTML5</span>
+                    <span class="tech-tag">CSS3</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">PHP</span>
+                </div>
+                <div class="portfolio-links">
+                    <a href="#" class="portfolio-btn btn-demo" onclick="openModal('bella')">Zobacz więcej</a>
+                    <a href="#" class="portfolio-btn btn-code">GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="portfolio-item fade-in" data-category="ecommerce">
+            <div class="portfolio-image">👗</div>
+            <div class="portfolio-content">
+                <h3 class="portfolio-title">Fashion Store</h3>
+                <div class="portfolio-category">E-commerce</div>
+                <p class="portfolio-description">Butik online z modą damską, zaawansowanym filtrowaniem produktów i programem lojalnościowym.</p>
+                <div class="portfolio-tech">
+                    <span class="tech-tag">Shopify</span>
+                    <span class="tech-tag">Liquid</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">SCSS</span>
+                </div>
+                <div class="portfolio-links">
+                    <a href="#" class="portfolio-btn btn-demo" onclick="openModal('fashion')">Zobacz więcej</a>
+                    <a href="#" class="portfolio-btn btn-code">GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="portfolio-item fade-in" data-category="webapp">
+            <div class="portfolio-image">💰</div>
+            <div class="portfolio-content">
+                <h3 class="portfolio-title">FinanceTracker</h3>
+                <div class="portfolio-category">Aplikacja Web</div>
+                <p class="portfolio-description">Aplikacja do zarządzania finansami osobistymi z budżetowaniem i analizą wydatków.</p>
+                <div class="portfolio-tech">
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">Express.js</span>
+                    <span class="tech-tag">MongoDB</span>
+                    <span class="tech-tag">Chart.js</span>
+                </div>
+                <div class="portfolio-links">
+                    <a href="#" class="portfolio-btn btn-demo" onclick="openModal('finance')">Zobacz więcej</a>
+                    <a href="#" class="portfolio-btn btn-code">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="stats-section">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-item fade-in">
+                <div class="stat-number" data-target="47">0</div>
+                <div class="stat-label">Zakończone Projekty</div>
+            </div>
+            <div class="stat-item fade-in">
+                <div class="stat-number" data-target="32">0</div>
+                <div class="stat-label">Zadowoleni Klienci</div>
+            </div>
+            <div class="stat-item fade-in">
+                <div class="stat-number" data-target="5">0</div>
+                <div class="stat-label">Lat Doświadczenia</div>
+            </div>
+            <div class="stat-item fade-in">
+                <div class="stat-number" data-target="98">0</div>
+                <div class="stat-label">% Pozytywnych Opinii</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials-section">
+    <div class="container">
+        <h2 class="testimonials-title fade-in">Co mówią klienci</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial fade-in">
+                <p class="testimonial-text">Mateusz stworzył dla nas fantastyczny sklep internetowy. Profesjonalne podejście, terminowość i świetna komunikacja. Polecam!</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">AK</div>
+                    <div class="author-info">
+                        <h4>Anna Kowalska</h4>
+                        <p>Właścicielka TechMart</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial fade-in">
+                <p class="testimonial-text">Strona naszej kliniki wygląda świetnie i działa bez zarzutu. Pacjenci chwalą łatwość rezerwacji wizyt. Dziękujemy!</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">PM</div>
+                    <div class="author-info">
+                        <h4>Dr Piotr Nowak</h4>
+                        <p>Klinika Medica</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial fade-in">
+                <p class="testimonial-text">Aplikacja TaskFlow revolutionized naszą pracę zespołową. Intuicyjny interface i potężne funkcje. Rewelacja!</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">MZ</div>
+                    <div class="author-info">
+                        <h4>Michał Zając</h4>
+                        <p>CEO StartupLab</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact CTA -->
+<section class="contact-cta">
+    <div class="container">
+        <h2 class="fade-in">Podobają Ci się moje projekty?</h2>
+        <p class="fade-in">Stwórzmy razem coś wyjątkowego dla Twojego biznesu!</p>
+        <a href="kontakt.html" class="btn-primary filled">Porozmawiajmy</a>
+        <a href="uslugi.html" class="btn-primary">Zobacz usługi</a>
+    </div>
+</section>
+
+<!-- Modal -->
+<div class="modal" id="projectModal">
+    <div class="modal-content">
+        <div class="modal-header" id="modalIcon">
+            <div class="modal-close" onclick="closeModal()">&times;</div>
+            🛒
+        </div>
+        <div class="modal-body">
+            <h2 class="modal-title" id="modalTitle">Sklep TechMart</h2>
+            <p class="modal-description" id="modalDescription">
+                Kompleksowy sklep internetowy z elektroniką, stworzony od podstaw z naciskiem na użyteczność i wydajność. 
+                Projekt obejmuje pełną integrację z systemami płatności, zarządzanie zapasami w czasie rzeczywistym, 
+                oraz zaawansowany panel administracyjny.
+            </p>
+            <div class="modal-tech" id="modalTech">
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">MongoDB</span>
+                <span class="tech-tag">Stripe</span>
+            </div>
+            <div class="modal-features">
+                <h4>Kluczowe funkcjonalności:</h4>
+                <ul id="modalFeatures">
+                    <li>Responsywny design na wszystkich urządzeniach</li>
+                    <li>Integracja z PayU, Stripe i PayPal</li>
+                    <li>System zarządzania zapasami</li>
+                    <li>Panel administracyjny</li>
+                    <li>Zaawansowane filtry produktów</li>
+                    <li>System opinii i ocen</li>
+                    <li>Optymalizacja SEO</li>
+                    <li>Analytics i raporty sprzedaży</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="portfolio.js"></script>
+</body>
+</html>

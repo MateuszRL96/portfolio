@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt - Mateusz Kulec Developer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="kontakt.css" />
+
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="main.html" class="logo">MKCUP2.dev</a>
+            <ul class="nav-links">
+                <li><a href="main.html">Start</a></li>
+                <li><a href="uslugi.html">Usługi</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="o-mnie.html">O mnie</a></li>
+                <li><a href="kontakt.html" class="nav-active">Kontakt</a></li>
+            </ul>
+            <a href="#contact-form" class="cta-nav">Skontaktuj się</a>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1 class="fade-in">Skontaktuj się ze mną</h1>
+            <p class="fade-in">Porozmawiajmy o Twoim projekcie i wspólnie stwórzmy coś wyjątkowego</p>
+        </div>
+    </div>
+
+    <!-- Contact Main -->
+    <section class="contact-main">
+        <div class="container">
+            <div class="contact-intro fade-in">
+                <h2>Jestem tutaj, żeby Ci pomóc</h2>
+                <p>Szukasz partnera do realizacji swojego projektu webowego? Świetnie trafiłeś! Jestem gotowy, żeby wysłuchać Twoich potrzeb i zaproponować najlepsze rozwiązanie.</p>
+            </div>
+
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item fade-in">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <p>mateusz.kulec@gmail.com</p>
+                            <small>Odpowiadam w ciągu 24 godzin</small>
+                            <small>Najszybszy sposób kontaktu</small>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item fade-in">
+                        <div class="contact-icon">📱</div>
+                        <div class="contact-details">
+                            <h3>Telefon</h3>
+                            <p>+48 533828726</p>
+                            <small>Poniedziałek - Piątek: 9:00 - 18:00</small>
+                            <small>Sobota: 10:00 - 14:00</small>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item fade-in">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-details">
+                            <h3>Lokalizacja</h3>
+                            <p>Krakow, Wielkopolska</p>
+                            <small>Spotkania online lub stacjonarne</small>
+                            <small>Obsługuję klientów z całej Polski</small>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item fade-in">
+                        <div class="contact-icon">💼</div>
+                        <div class="contact-details">
+                            <h3>LinkedIn</h3>
+                            <p>Profesjonalny profil</p>
+                            <small>Połączmy się zawodowo</small>
+                            <a href="#" class="social-link">https://www.linkedin.com/in/mateusz-kulec-027a63227/</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form fade-in" id="contact-form">
+                    <h3 class="form-title">Napisz do mnie</h3>
+                    <p class="form-subtitle">Wypełnij formularz, a odpowiem najszybciej jak to możliwe</p>
+                    
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">Imię *</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Nazwisko *</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Telefon</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="service">Typ usługi</label>
+                                <select id="service" name="service">
+                                    <option value="">Wybierz usługę</option>
+                                    <option value="website">Strona internetowa</option>
+                                    <option value="ecommerce">Sklep internetowy</option>
+                                    <option value="webapp">Aplikacja webowa</option>
+                                    <option value="maintenance">Utrzymanie/Aktualizacje</option>
+                                    <option value="consultation">Konsultacje</option>
+                                    <option value="other">Inne</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="budget">Budżet projektu</label>
+                                <select id="budget" name="budget">
+                                    <option value="">Wybierz przedział</option>
+                                    <option value="2500-5000">2500 - 5000 zł</option>
+                                    <option value="5000-10000">5000 - 10000 zł</option>
+                                    <option value="10000-20000">10000 - 20000 zł</option>
+                                    <option value="20000+">Powyżej 20000 zł</option>
+                                    <option value="consultation">Do ustalenia</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="timeline">Preferowany termin realizacji</label>
+                            <select id="timeline" name="timeline">
+                                <option value="">Wybierz termin</option>
+                                <option value="asap">Jak najszybciej</option>
+                                <option value="1month">Do 1 miesiąca</option>
+                                <option value="3months">Do 3 miesięcy</option>
+                                <option value="flexible">Elastyczny termin</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Szczegóły projektu *</label>
+                            <textarea id="message" name="message" placeholder="Opisz szczegółowo swój projekt: cele, wymagania, oczekiwania, inspiracje, funkcjonalności..." required></textarea>
+                        </div>
+                        
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="privacy" name="privacy" required>
+                                <span class="checkmark"></span>
+                                Zgadzam się na przetwarzanie moich danych osobowych zgodnie z <a href="#">polityką prywatności</a> *
+                            </label>
+                        </div>
+                        
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="newsletter" name="newsletter">
+                                <span class="checkmark"></span>
+                                Chcę otrzymywać newsletter z poradnikami, aktualnościami i ofertami specjalnymi
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary">
+                            <span class="btn-text">Wyślij wiadomość</span>
+                            <span class="btn-loading">Wysyłanie...</span>
+                        </button>
+                    </form>
+                    
+                    <div class="form-success">
+                        ✅ Dziękuję za wiadomość! Odpowiem w ciągu 24 godzin.
+                    </div>
+                    
+                    <div class="form-error">
+                        ❌ Wystąpił błąd. Spróbuj ponownie lub skontaktuj się bezpośrednio.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Alternative Contact Methods -->
+    <section class="alt-contact">
+        <div class="container">
+            <h2 class="alt-contact-title fade-in">Inne sposoby kontaktu</h2>
+            <p class="alt-contact-subtitle fade-in">Wybierz najwygodniejszy dla Ciebie sposób komunikacji</p>
+            
+            <div class="alt-methods">
+                <div class="alt-method fade-in">
+                    <div class="alt-method-icon">💬</div>
+                    <h3>Szybka rozmowa</h3>
+                    <p>Potrzebujesz szybkiej odpowiedzi? Zadzwoń lub umów się na rozmowę wideo.</p>
+                    <a href="tel:+48123456789" class="btn-secondary">Zadzwoń teraz</a>
+                </div>
+                
+                <div class="alt-method fade-in">
+                    <div class="alt-method-icon">📅</div>
+                    <h3>Spotkanie online</h3>
+                    <p>Umów się na bezpłatną konsultację przez Zoom, Teams lub Google Meet.</p>
+                    <a href="#" class="btn-secondary">Umów spotkanie</a>
+                </div>
+                
+                <div class="alt-method fade-in">
+                    <div class="alt-method-icon">🌐</div>
+                    <h3>Social Media</h3>
+                    <p>Śledź moje projekty i aktualności na LinkedIn i innych platformach.</p>
+                    <a href="#" class="btn-secondary">Obserwuj</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="faq-title fade-in">Często zadawane pytania</h2>
+            <p class="faq-subtitle fade-in">Odpowiedzi na najczęstsze pytania dotyczące współpracy</p>
+            
+            <div class="faq-item fade-in">
+                <div class="faq-question" onclick="toggleFAQ(0)">
+                    <span>Jak szybko odpowiadasz na wiadomości?</span>
+                    <div class="faq-icon">+</div>
+                </div>
+                <div class="faq-answer">
+                    <p>Staram się odpowiadać na wszystkie wiadomości w ciągu 24 godzin w dni robocze. W przypadku pilnych spraw zalecam kontakt telefoniczny - odpowiadam praktycznie od ręki w godzinach pracy.</p>
+                </div>
+                <div class="faq-item fade-in">
+                    <div class="faq-question" onclick="toggleFAQ(0)">
+                        <span>Jak szybko odpowiadasz na wiadomości?</span>
+                        <div class="faq-icon">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Staram się odpowiadać na wszystkie wiadomości w ciągu 24 godzin w dni robocze. W przypadku pilnych spraw zalecam kontakt telefoniczny - odpowiadam praktycznie od ręki w godzinach pracy.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question" onclick="toggleFAQ(1)">
+                        <span>Jakie są Twoje stawki i jak naliczasz koszty?</span>
+                        <div class="faq-icon">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Każdy projekt wyceniam indywidualnie, biorąc pod uwagę złożoność, funkcjonalności i czas realizacji. Oferuję zarówno stawkę godzinową (od 150 zł/h), jak i wyceny za cały projekt. Zawsze otrzymasz szczegółową wycenę przed rozpoczęciem prac.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question" onclick="toggleFAQ(2)">
+                        <span>Czy oferujesz bezpłatną konsultację?</span>
+                        <div class="faq-icon">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Tak! Pierwsza konsultacja (do 30 minut) jest zawsze bezpłatna. Podczas tego spotkania omówimy Twoje potrzeby, cele projektu i możliwe rozwiązania. To również okazja, żebyśmy się poznali i sprawdzili, czy dobrze będziemy współpracować.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question" onclick="toggleFAQ(3)">
+                        <span>Jak długo trwa realizacja projektu?</span>
+                        <div class="faq-icon">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>To zależy od złożoności projektu. Prosta strona wizytówka to 1-2 tygodnie, rozbudowana strona korporacyjna 3-4 tygodnie, a sklep internetowy lub aplikacja webowa może zająć 6-12 tygodni. Dokładny harmonogram ustalamy na etapie planowania.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question" onclick="toggleFAQ(4)">
+                        <span>Czy zapewniasz wsparcie po zakończeniu projektu?</span>
+                        <div class="faq-icon">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Oczywiście! Każdy projekt objęty jest 30-dniową gwarancją na błędy i poprawki. Dodatkowo oferuję pakiety wsparcia technicznego, aktualizacji i rozwoju strony. Nie zostawię Cię samego po oddaniu projektu.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question" onclick="toggleFAQ(5)">
+                        <span>Czy tworzysz responsywne strony internetowe?</span>
+                        <div class="faq-icon">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutnie! Wszystkie moje strony są w pełni responsywne i świetnie wyglądają na komputerach, tabletach i telefonach. Testuję je na różnych urządzeniach i przegladarkach, żeby mieć pewność, że działają perfekcyjnie.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question" onclick="toggleFAQ(6)">
+                        <span>Czy mogę zobaczyć postępy prac w trakcie realizacji?</span>
+                        <div class="faq-icon">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Tak! Współpraca ze mną to pełna transparentność. Regularnie pokazuję postępy prac, konsultuję każdy etap i uwzględniam Twoje uwagi. Możesz śledzić rozwój projektu przez dedykowaną platformę lub podczas regularnych spotkań.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Footer -->
+        <footer style="background: var(--dark); color: white; padding: 4rem 0 2rem 0; margin-top: 4rem;">
+            <div class="container">
+                <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem;">
+                    <div>
+                        <h3 style="color: var(--accent); margin-bottom: 1rem; font-size: 1.5rem;">JK.dev</h3>
+                        <p style="color: #94a3b8; margin-bottom: 1.5rem; line-height: 1.6;">Profesjonalne strony internetowe, sklepy online i aplikacje webowe. Tworzę nowoczesne rozwiązania, które pomagają firmom rozwijać się w internecie.</p>
+                        <div style="display: flex; gap: 1rem;">
+                            <a href="#" style="color: var(--accent); font-size: 1.5rem; transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='var(--accent)'">💼</a>
+                            <a href="#" style="color: var(--accent); font-size: 1.5rem; transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='var(--accent)'">📧</a>
+                            <a href="#" style="color: var(--accent); font-size: 1.5rem; transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='var(--accent)'">📱</a>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 style="margin-bottom: 1rem; color: white; font-size: 1.2rem;">Usługi</h4>
+                        <ul style="list-style: none; color: #94a3b8;">
+                            <li style="margin-bottom: 0.5rem;"><a href="uslugi.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='#94a3b8'">Strony internetowe</a></li>
+                            <li style="margin-bottom: 0.5rem;"><a href="uslugi.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='#94a3b8'">Sklepy online</a></li>
+                            <li style="margin-bottom: 0.5rem;"><a href="uslugi.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='#94a3b8'">Aplikacje webowe</a></li>
+                            <li style="margin-bottom: 0.5rem;"><a href="uslugi.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='#94a3b8'">Wsparcie techniczne</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 style="margin-bottom: 1rem; color: white; font-size: 1.2rem;">Firma</h4>
+                        <ul style="list-style: none; color: #94a3b8;">
+                            <li style="margin-bottom: 0.5rem;"><a href="o-mnie.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='#94a3b8'">O mnie</a></li>
+                            <li style="margin-bottom: 0.5rem;"><a href="portfolio.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='#94a3b8'">Portfolio</a></li>
+                            <li style="margin-bottom: 0.5rem;"><a href="blog.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='#94a3b8'">Blog</a></li>
+                            <li style="margin-bottom: 0.5rem;"><a href="kontakt.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='#94a3b8'">Kontakt</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 style="margin-bottom: 1rem; color: white; font-size: 1.2rem;">Kontakt</h4>
+                        <ul style="list-style: none; color: #94a3b8;">
+                            <li style="margin-bottom: 0.5rem;">📧 mateusz.kulec@gmail.com</li>
+                            <li style="margin-bottom: 0.5rem;">📱 +48 533 828 726</li>
+                            <li style="margin-bottom: 0.5rem;">📍 Krakow, Polska</li>
+                            <li style="margin-bottom: 0.5rem;">🕒 Pon-Pt: 9:00-18:00</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; padding-top: 2rem; border-top: 1px solid #334155; color: #94a3b8;">
+                    <p>&copy; 2024 Mateusz Kulec Developer. Wszystkie prawa zastrzeżone.</p>
+                </div>
+            </div>
+        </footer>
+    
+    <script src="kontakt.js"></script>
+    </body>
+    </html>
