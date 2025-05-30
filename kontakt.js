@@ -28,94 +28,75 @@ gsap.timeline()
     .from('nav', {duration: 1, y: -100, opacity: 0, ease: 'power3.out'}, '-=0.8');
 
 // Form handling
-const contactForm = document.getElementById('contactForm');
-const successMessage = document.querySelector('.form-success');
-const errorMessage = document.querySelector('.form-error');
+document.addEventListener('DOMContentLoaded', () => {
+    const contactForm = document.getElementById('contactForm');
+    const formSuccess = document.querySelector('.form-success');
+    const formError = document.querySelector('.form-error');
 
-contactForm.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    
-    const submitBtn = this.querySelector('.btn-primary');
-    const formData = new FormData(this);
-    
-    // Show loading state
-    submitBtn.classList.add('loading');
-    submitBtn.disabled = true;
-    
-    // Hide previous messages
-    successMessage.style.display = 'none';
-    errorMessage.style.display = 'none';
-    
-    try {
-        // Simulate form submission
-        await new Promise(resolve => setTimeout(resolve, 2000));
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Hide any previous messages
+        formSuccess.style.display = 'none';
+        formError.style.display = 'none';
+
+        // Get form data
+        const formData = {
+            firstName: document.getElementById('firstName').value,
+            lastName: document.getElementById('lastName').value,
+            email: document.getElementById('email').value,
+            phone: document.getElementById('phone').value,
+            service: document.getElementById('service').value,
+            budget: document.getElementById('budget').value,
+            timeline: document.getElementById('timeline').value,
+            message: document.getElementById('message').value
+        };
+
+        try {
+            const API_URL = window.location.hostname === 'localhost' 
+                ? 'http://localhost:3000' 
+                : 'https://twoj-backend.onrender.com'; // To URL zostanie utworzone po deploymencie na Render
+
+            const response = await fetch(`${API_URL}/api/contact`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                // Show success message
+                formSuccess.style.display = 'block';
+                contactForm.reset();
+            } else {
+                // Show error message
+                formError.style.display = 'block';
+            }
+        } catch (error) {
+            console.error('Błąd:', error);
+            formError.style.display = 'block';
+        }
+    });
+
+    // FAQ Toggle functionality
+    window.toggleFAQ = (index) => {
+        const faqItems = document.querySelectorAll('.faq-item');
+        const faqItem = faqItems[index];
+        const answer = faqItem.querySelector('.faq-answer');
+        const icon = faqItem.querySelector('.faq-icon');
         
-        // Show success message
-        successMessage.style.display = 'block';
-        successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        
-        // Reset form
-        this.reset();
-        
-        // Send confirmation email animation
-        gsap.from(successMessage, {
-            duration: 0.5,
-            scale: 0.8,
-            opacity: 0,
-            ease: 'back.out(1.7)'
-        });
-        
-    } catch (error) {
-        // Show error message
-        errorMessage.style.display = 'block';
-        errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        
-        gsap.from(errorMessage, {
-            duration: 0.5,
-            scale: 0.8,
-            opacity: 0,
-            ease: 'back.out(1.7)'
-        });
-    } finally {
-        // Hide loading state
-        submitBtn.classList.remove('loading');
-        submitBtn.disabled = false;
-    }
+        if (answer.style.display === 'block') {
+            answer.style.display = 'none';
+            icon.textContent = '+';
+        } else {
+            answer.style.display = 'block';
+            icon.textContent = '-';
+        }
+    };
 });
-
-// FAQ Toggle
-let openFAQ = null;
-
-function toggleFAQ(index) {
-    const faqItems = document.querySelectorAll('.faq-item');
-    const currentItem = faqItems[index];
-    const answer = currentItem.querySelector('.faq-answer');
-    const icon = currentItem.querySelector('.faq-icon');
-    
-    // Close previously opened FAQ
-    if (openFAQ !== null && openFAQ !== index) {
-        const prevItem = faqItems[openFAQ];
-        const prevAnswer = prevItem.querySelector('.faq-answer');
-        const prevIcon = prevItem.querySelector('.faq-icon');
-        
-        prevAnswer.classList.remove('active');
-        prevIcon.style.transform = 'rotate(0deg)';
-        prevIcon.textContent = '+';
-    }
-    
-    // Toggle current FAQ
-    if (answer.classList.contains('active')) {
-        answer.classList.remove('active');
-        icon.style.transform = 'rotate(0deg)';
-        icon.textContent = '+';
-        openFAQ = null;
-    } else {
-        answer.classList.add('active');
-        icon.style.transform = 'rotate(45deg)';
-        icon.textContent = '−';
-        openFAQ = index;
-    }
-}
 
 // Contact item hover animations
 document.querySelectorAll('.contact-item').forEach(item => {
