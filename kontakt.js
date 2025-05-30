@@ -53,21 +53,29 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         try {
+            // Sprawdź aktualny host
+            console.log('Current hostname:', window.location.hostname);
+
             const API_URL = window.location.hostname === 'localhost' 
                 ? 'http://localhost:3000' 
-                : 'https://portfolio-contact-form-qqxr.onrender.com'; // Zaktualizuj ten URL na twój URL z Render
+                : 'https://portfolio-contact-form-qqxr.onrender.com';  // Twój URL z Render
 
-            console.log('Wysyłanie do:', `${API_URL}/api/contact`); // Debugging
+            console.log('Wysyłanie do:', `${API_URL}/api/contact`);
+            console.log('Dane formularza:', formData);
 
             const response = await fetch(`${API_URL}/api/contact`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Origin': window.location.origin
                 },
+                credentials: 'include',
                 body: JSON.stringify(formData)
             });
 
-            console.log('Status odpowiedzi:', response.status); // Debugging
+            console.log('Response status:', response.status);
+            console.log('Response headers:', [...response.headers.entries()]);
+
             const data = await response.json();
             console.log('Odpowiedź:', data); // Debugging
 

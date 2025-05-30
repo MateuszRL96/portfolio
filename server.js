@@ -7,14 +7,40 @@ const app = express();
 
 // Middleware
 app.use(cors({
-    origin: ['https://mkcup2.github.io', 'http://localhost:3000', 'https://www.mkcup2.com'],
-    methods: ['POST', 'GET'],
-    credentials: true
+    origin: function(origin, callback) {
+        const allowedOrigins = [
+            'https://mkcup2.github.io',
+            'http://localhost:3000',
+            'https://www.mkcup2.com',
+            'http://www.mkcup2.com',
+            'https://mkcup2.com',
+            'http://mkcup2.com'
+        ];
+        
+        // Allow requests with no origin (like mobile apps or curl requests)
+        if (!origin) return callback(null, true);
+        
+        if (allowedOrigins.indexOf(origin) === -1) {
+            console.log('Origin rejected:', origin);
+            return callback(new Error('Origin not allowed'), false);
+        }
+        
+        console.log('Origin accepted:', origin);
+        return callback(null, true);
+    },
+    methods: ['POST', 'GET', 'OPTIONS'],
+    credentials: true,
+    allowedHeaders: ['Content-Type', 'Origin']
 }));
+
+// Enable preflight requests for all routes
+app.options('*', cors());
+
 app.use(express.json());
 
 // Basic route for checking if server is running
 app.get('/', (req, res) => {
+    console.log('Received GET request to /');
     res.send('Server is running!');
 });
 
