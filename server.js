@@ -7,66 +7,33 @@ const app = express();
 
 // Middleware
 app.use(cors({
-    origin: function(origin, callback) {
-        const allowedOrigins = [
-            'https://mkcup2.github.io',
-            'http://localhost:3000',
-            'https://www.mkcup2.com',
-            'http://www.mkcup2.com',
-            'https://mkcup2.com',
-            'http://mkcup2.com'
-        ];
-        
-        // Allow requests with no origin (like mobile apps or curl requests)
-        if (!origin) return callback(null, true);
-        
-        if (allowedOrigins.indexOf(origin) === -1) {
-            console.log('Origin rejected:', origin);
-            return callback(new Error('Origin not allowed'), false);
-        }
-        
-        console.log('Origin accepted:', origin);
-        return callback(null, true);
-    },
+    origin: ['https://mkcup2.github.io', 'http://localhost:3000', 'https://www.mkcup2.com', 'https://mkcup2.com'],
     methods: ['POST', 'GET', 'OPTIONS'],
-    credentials: true,
-    allowedHeaders: ['Content-Type', 'Origin']
+    allowedHeaders: ['Content-Type']
 }));
-
-// Enable preflight requests for all routes
-app.options('*', cors());
 
 app.use(express.json());
 
 // Basic route for checking if server is running
 app.get('/', (req, res) => {
-    console.log('Received GET request to /');
+    console.log('GET / - Checking server status');
     res.send('Server is running!');
 });
 
-// Create transporter for sending emails
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-    }
-});
-
-// Test email configuration
-app.get('/test-email', async (req, res) => {
-    try {
-        await transporter.verify();
-        res.send('Email configuration is correct!');
-    } catch (error) {
-        console.error('Email configuration error:', error);
-        res.status(500).send('Email configuration error: ' + error.message);
-    }
+// Test route for checking email configuration
+app.get('/test-email', (req, res) => {
+    console.log('GET /test-email - Testing email configuration');
+    res.send({
+        emailUser: process.env.EMAIL_USER ? 'Email user is set' : 'Email user is missing',
+        emailPass: process.env.EMAIL_PASS ? 'Email password is set' : 'Email password is missing'
+    });
 });
 
 // Contact form endpoint
 app.post('/api/contact', async (req, res) => {
-    console.log('Otrzymano żądanie:', req.body); // Debugging
+    console.log('POST /api/contact - Received contact form submission');
+    console.log('Request headers:', req.headers);
+    console.log('Request body:', req.body);
 
     const {
         firstName,
@@ -79,26 +46,25 @@ app.post('/api/contact', async (req, res) => {
         message
     } = req.body;
 
-    // Validate required fields
     if (!firstName || !lastName || !email || !message) {
-        return res.status(400).json({ 
+        console.log('Missing required fields');
+        return res.status(400).json({
             message: 'Brakuje wymaganych pól',
-            missing: {
-                firstName: !firstName,
-                lastName: !lastName,
-                email: !email,
-                message: !message
-            }
+            missing: { firstName: !firstName, lastName: !lastName, email: !email, message: !message }
         });
     }
 
     try {
-        console.log('Konfiguracja email:', {
-            user: process.env.EMAIL_USER,
-            passLength: process.env.EMAIL_PASS ? process.env.EMAIL_PASS.length : 0
-        }); // Debugging (nie pokazujemy pełnego hasła)
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_PASS
+            }
+        });
 
-        // Email content
+        console.log('Attempting to send email...');
+        
         const mailOptions = {
             from: `"Formularz kontaktowy" <${process.env.EMAIL_USER}>`,
             to: process.env.EMAIL_USER,
@@ -117,19 +83,16 @@ app.post('/api/contact', async (req, res) => {
             `
         };
 
-        console.log('Próba wysłania maila...'); // Debugging
-
-        // Send email
         const info = await transporter.sendMail(mailOptions);
-        console.log('Mail wysłany:', info); // Debugging
+        console.log('Email sent successfully:', info.messageId);
 
-        res.status(200).json({ 
+        res.status(200).json({
             message: 'Wiadomość została wysłana pomyślnie',
             messageId: info.messageId
         });
     } catch (error) {
-        console.error('Szczegóły błędu:', error); // Debugging
-        res.status(500).json({ 
+        console.error('Error sending email:', error);
+        res.status(500).json({
             message: 'Wystąpił błąd podczas wysyłania wiadomości',
             error: error.message
         });
@@ -138,8 +101,8 @@ app.post('/api/contact', async (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Serwer działa na porcie ${PORT}`);
-    console.log('Konfiguracja CORS:', {
-        origins: ['https://mkcup2.github.io', 'http://localhost:3000', 'https://www.mkcup2.com']
+    console.log(`Server is running on port ${PORT}`);
+    console.log('CORS configuration:', {
+        origins: ['https://mkcup2.github.io', 'http://localhost:3000', 'https://www.mkcup2.com', 'https://mkcup2.com']
     });
 }); 

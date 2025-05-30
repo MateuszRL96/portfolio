@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const API_URL = window.location.hostname === 'localhost' 
                 ? 'http://localhost:3000' 
-                : 'https://portfolio-contact-form-qqxr.onrender.com';  // Twój URL z Render
+                : 'https://portfolio-yson.onrender.com';  // Prawidłowy URL z Render
 
             console.log('Wysyłanie do:', `${API_URL}/api/contact`);
             console.log('Dane formularza:', formData);
@@ -67,9 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Origin': window.location.origin
                 },
-                credentials: 'include',
                 body: JSON.stringify(formData)
             });
 
