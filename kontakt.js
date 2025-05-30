@@ -55,7 +55,9 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const API_URL = window.location.hostname === 'localhost' 
                 ? 'http://localhost:3000' 
-                : 'https://twoj-backend.onrender.com'; // To URL zostanie utworzone po deploymencie na Render
+                : 'https://portfolio-contact-form-qqxr.onrender.com'; // Zaktualizuj ten URL na twój URL z Render
+
+            console.log('Wysyłanie do:', `${API_URL}/api/contact`); // Debugging
 
             const response = await fetch(`${API_URL}/api/contact`, {
                 method: 'POST',
@@ -65,7 +67,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify(formData)
             });
 
+            console.log('Status odpowiedzi:', response.status); // Debugging
             const data = await response.json();
+            console.log('Odpowiedź:', data); // Debugging
 
             if (response.ok) {
                 // Show success message
@@ -74,6 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 // Show error message
                 formError.style.display = 'block';
+                console.error('Błąd serwera:', data.message);
             }
         } catch (error) {
             console.error('Błąd:', error);
