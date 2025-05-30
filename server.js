@@ -21,12 +21,48 @@ app.get('/', (req, res) => {
 });
 
 // Test route for checking email configuration
-app.get('/test-email', (req, res) => {
+app.get('/test-email', async (req, res) => {
     console.log('GET /test-email - Testing email configuration');
-    res.send({
-        emailUser: process.env.EMAIL_USER ? 'Email user is set' : 'Email user is missing',
-        emailPass: process.env.EMAIL_PASS ? 'Email password is set' : 'Email password is missing'
+    console.log('Environment variables status:', {
+        EMAIL_USER_SET: !!process.env.EMAIL_USER,
+        EMAIL_PASS_SET: !!process.env.EMAIL_PASS,
+        EMAIL_USER_LENGTH: process.env.EMAIL_USER?.length,
+        EMAIL_PASS_LENGTH: process.env.EMAIL_PASS?.length
     });
+
+    try {
+        const transporter = nodemailer.createTransport({
+            host: 'smtp.gmail.com',
+            port: 465,
+            secure: true, // use SSL
+            auth: {
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_PASS
+            },
+            debug: true // Show debug output
+        });
+
+        console.log('Testing email connection...');
+        await transporter.verify();
+        console.log('Email connection successful!');
+
+        res.json({
+            status: 'success',
+            message: 'Email configuration is correct',
+            config: {
+                emailUser: process.env.EMAIL_USER ? 'Set correctly' : 'Missing',
+                emailPass: process.env.EMAIL_PASS ? 'Set correctly' : 'Missing'
+            }
+        });
+    } catch (error) {
+        console.error('Email configuration error:', error);
+        res.status(500).json({
+            status: 'error',
+            message: 'Email configuration error',
+            error: error.message,
+            stack: error.stack
+        });
+    }
 });
 
 // Contact form endpoint
@@ -55,19 +91,26 @@ app.post('/api/contact', async (req, res) => {
     }
 
     try {
+        console.log('Creating email transporter...');
         const transporter = nodemailer.createTransport({
-            service: 'gmail',
+            host: 'smtp.gmail.com',
+            port: 465,
+            secure: true, // use SSL
             auth: {
                 user: process.env.EMAIL_USER,
                 pass: process.env.EMAIL_PASS
-            }
+            },
+            debug: true // Show debug output
         });
 
-        console.log('Attempting to send email...');
-        
+        console.log('Verifying email configuration...');
+        await transporter.verify();
+        console.log('Email configuration verified successfully');
+
+        console.log('Preparing email content...');
         const mailOptions = {
             from: `"Formularz kontaktowy" <${process.env.EMAIL_USER}>`,
-            to: process.env.EMAIL_USER,
+            to: 'mati.kulec13@gmail.com',
             replyTo: email,
             subject: `Nowa wiadomość od ${firstName} ${lastName}`,
             html: `
@@ -83,6 +126,7 @@ app.post('/api/contact', async (req, res) => {
             `
         };
 
+        console.log('Attempting to send email...');
         const info = await transporter.sendMail(mailOptions);
         console.log('Email sent successfully:', info.messageId);
 
@@ -91,10 +135,20 @@ app.post('/api/contact', async (req, res) => {
             messageId: info.messageId
         });
     } catch (error) {
-        console.error('Error sending email:', error);
+        console.error('Detailed error:', {
+            message: error.message,
+            stack: error.stack,
+            code: error.code,
+            command: error.command
+        });
+
         res.status(500).json({
             message: 'Wystąpił błąd podczas wysyłania wiadomości',
-            error: error.message
+            error: error.message,
+            details: {
+                code: error.code,
+                command: error.command
+            }
         });
     }
 });
@@ -102,7 +156,8 @@ app.post('/api/contact', async (req, res) => {
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
-    console.log('CORS configuration:', {
-        origins: ['https://mkcup2.github.io', 'http://localhost:3000', 'https://www.mkcup2.com', 'https://mkcup2.com']
+    console.log('Environment check:', {
+        EMAIL_USER_SET: !!process.env.EMAIL_USER,
+        EMAIL_PASS_SET: !!process.env.EMAIL_PASS
     });
 }); 
